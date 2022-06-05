@@ -1,7 +1,16 @@
 //https://www.youtube.com/watch?v=DqaTKBU9TZk
 //47.57
 
-let Tasks = ['eat', 'clean', 'run'];
+let Tasks = [{
+        name:'eat',
+        dueDate:'2022-06-10'
+    },{
+        name:'clean',
+        dueDate:'2022-06-10'
+    },{
+        name:'run',
+        dueDate:'2022-06-11'
+    }];
 
 function display(){
     
@@ -10,7 +19,7 @@ function display(){
     //append the task in textbox
     Tasks.forEach(function(task){
         let t = document.createElement('div');
-        t.innerText = task;
+        t.innerText = task.name + ' ' + task.dueDate;
         let tasksList = document.getElementById('tasks-list');
         tasksList.appendChild(t);
     })
