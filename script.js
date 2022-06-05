@@ -1,3 +1,5 @@
+//https://www.youtube.com/watch?v=DqaTKBU9TZk
+//47.57
 
 let Tasks = ['eat', 'clean', 'run'];
 
@@ -34,6 +36,9 @@ function taskDone(){
     buttonText.innerText = 'Done';
 }
 
+
+
+/* CM TO INCHES CONVERTER************
 function toCM(){
     let box = document.getElementById('number-input');
     let input = box.value;
@@ -51,10 +56,10 @@ function toINCH(){
     d.innerText = ans + ' inches';
     let answer = document.getElementById('result');
     answer.appendChild(d);
-}
+} */
 
 
-/* Shopping cart practice
+/* Shopping cart practice *************
 function addItem(item){
     let groceryList = document.getElementById('cart');
     let f = document.createElement('div');
@@ -67,7 +72,7 @@ function clearCart(){
 } */
 
 
-/*
+/* Sum all numbers in array *****************
 let sum = 0;
 function arraySum(numArr){
     
@@ -98,17 +103,17 @@ function arraySum(arr){
 
 arraySum([2,3,4]); 
 
-/*
-            let count = 0;
+/* Two buttons which increase or decrease a number***********
+let count = 0;
 
-            function addCount(){
-                count = count + 1;
-                let counter = document.getElementById('counter');
-                counter.innerText = count;
-            }
+function addCount(){
+    count = count + 1;
+    let counter = document.getElementById('counter');
+    counter.innerText = count;
+}
 
-            function subtractCount(){
-                count -= 1;
-                let counter = document.getElementById('counter');
-                counter.innerText = count;
+function subtractCount(){
+    count -= 1;
+    let counter = document.getElementById('counter');
+    counter.innerText = count;
 } */
