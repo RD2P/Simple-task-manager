@@ -1,4 +1,3 @@
-document.title = "JS Practice";
 
 let count = 0;
 
@@ -18,12 +17,13 @@ function subtractCount(){
 let Tasks = ['eat', 'clean', 'run'];
 Tasks.push('jump');
 
-/*
+
 Tasks.forEach(function(task){
     let t = document.createElement('div');
     t.innerText = task;
     document.body.appendChild(t);
 })
+
 
 function addTask(){
     let textbox = document.getElementById('newTaskIn');
@@ -35,8 +35,8 @@ function addTask(){
 }
 
 function taskDone(){
-    let bText = document.getElementById('todo-button');
-    bText.innerText = 'Done';
+    let buttonText = document.getElementById('todo-button');
+    buttonText.innerText = 'Done';
 }
 
 
