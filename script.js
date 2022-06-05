@@ -26,12 +26,31 @@ function addTask(){
 function clearList(){
     Tasks = [];
     display();
-    //document.getElementById('tasks-list').innerHTML = '';
+    
 }
 
 function taskDone(){
     let buttonText = document.getElementById('todo-button');
     buttonText.innerText = 'Done';
+}
+
+function toCM(){
+    let box = document.getElementById('number-input');
+    let input = box.value;
+    let ans = input*2.54;
+    let d = document.createElement('div');
+    d.innerText = ans + ' cm';
+    let answer = document.getElementById('result');
+    answer.appendChild(d);
+}
+function toINCH(){
+    let box = document.getElementById('number-input');
+    let input = box.value;
+    let ans = input/2.54;
+    let d = document.createElement('div');
+    d.innerText = ans + ' inches';
+    let answer = document.getElementById('result');
+    answer.appendChild(d);
 }
 
 
