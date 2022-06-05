@@ -8,14 +8,22 @@
     
 </head>
 <body>
-   <input id="newTaskIn" type="text"/>
-    <button onclick="addTask()">Add a thing</button>
+    <input id="newTaskIn" type="text"/>
+    <button onclick="addTask()">Add task</button>
+    <button onclick="clearList()">Clear</button>
+    
     <button id="todo-button" onclick="taskDone();">Not done</button>
+    
+    <div id="tasks-list"></div>
 
-    <div id="counter">0</div>
-    <button onclick="addCount();">Up</button>
-    <button onclick="subtractCount();">Down</button>
+    <!--- Shopping cart practice
+    <button id="apple" onclick="addItem('apple')">Apple</button>
+    <button id="tomato" onclick="addItem('tomato')">Tomato</button>
+    <button id="eggs"onclick="addItem('eggs')">Eggs</button>
+    <button id="clear" onclick="clearCart()">Clear</button>
+    <div id="cart">This is where your cart is</div> -->
 
-   <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>

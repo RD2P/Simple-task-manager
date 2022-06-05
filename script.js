@@ -1,43 +1,51 @@
 
-let count = 0;
-
-function addCount(){
-    count = count + 1;
-    let counter = document.getElementById('counter');
-    counter.innerText = count;
-}
-
-function subtractCount(){
-    count -= 1;
-    let counter = document.getElementById('counter');
-    counter.innerText = count;
-}
-
-
 let Tasks = ['eat', 'clean', 'run'];
-Tasks.push('jump');
 
+function display(){
+    
+    document.getElementById('tasks-list').innerHTML = ''; //reset list to nothing
 
-Tasks.forEach(function(task){
-    let t = document.createElement('div');
-    t.innerText = task;
-    document.body.appendChild(t);
-})
+    //append the task in textbox
+    Tasks.forEach(function(task){
+        let t = document.createElement('div');
+        t.innerText = task;
+        let tasksList = document.getElementById('tasks-list');
+        tasksList.appendChild(t);
+    })
+}
 
+display(); //render tasks from array on top
 
 function addTask(){
     let textbox = document.getElementById('newTaskIn');
     let newTask = textbox.value;
     Tasks.push(newTask);
-    let t = document.createElement('div');
-    t.innerText = newTask;
-    document.body.appendChild(t);
+    display();
+}
+
+function clearList(){
+    Tasks = [];
+    display();
+    //document.getElementById('tasks-list').innerHTML = '';
 }
 
 function taskDone(){
     let buttonText = document.getElementById('todo-button');
     buttonText.innerText = 'Done';
 }
+
+
+/* Shopping cart practice
+function addItem(item){
+    let groceryList = document.getElementById('cart');
+    let f = document.createElement('div');
+    f.innerText = item;
+    groceryList.appendChild(f);
+}
+
+function clearCart(){
+    document.getElementById('cart').innerHTML = '';
+} */
 
 
 /*
@@ -49,7 +57,7 @@ function arraySum(numArr){
     });
 }
 
-arraySum([2,3,5]);
+arraySum([2,3,5,6,7,8]);
 console.log(sum);
 */
 
@@ -69,4 +77,19 @@ function arraySum(arr){
     console.log(sum);
 }
 
-arraySum([2,3,4]); */
+arraySum([2,3,4]); 
+
+/*
+            let count = 0;
+
+            function addCount(){
+                count = count + 1;
+                let counter = document.getElementById('counter');
+                counter.innerText = count;
+            }
+
+            function subtractCount(){
+                count -= 1;
+                let counter = document.getElementById('counter');
+                counter.innerText = count;
+} */
