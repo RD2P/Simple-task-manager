@@ -1,11 +1,16 @@
 
 //-------------------MODEL-----
 
-let Tasks = [{        
-    name:'Task',
-    dueDate:'due date',
-    id:''
-}];
+let Tasks;
+const savedList = JSON.parse(localStorage.getItem('tasks')); 
+
+//check if there is a saved list in local storage
+if (Array.isArray(savedList)){
+    Tasks = savedList;
+}
+else {
+    Tasks = [];
+}
 
 //create a task in array of tasks
 function createTask(newTask,dueDate){
@@ -16,6 +21,7 @@ function createTask(newTask,dueDate){
         dueDate:dueDate,
         id:id
     });
+    saveList();
 }
 
 //remove a task from array of tasks
@@ -28,11 +34,18 @@ function removeTask(idToDelete){
             return true;
         }
     });
+    saveList();
 }
 
 //clears all tasks from array
 function clearTasks(){
     Tasks = [];
+    saveList();
+}
+
+//save the task list to local storage
+function saveList(){
+    localStorage.setItem('tasks',JSON.stringify(Tasks));
 }
 
 //-----------------VIEW--------
@@ -81,7 +94,6 @@ function addTask(){
         display(); 
         document.getElementById('new-task-box').value = '';    //Removes text from textbox after it has been entered
     }
-
 }
  
 //Deletes a task upon click of 'delete' button
@@ -96,5 +108,3 @@ function clearList(){
     clearTasks();
     display();
 }
-
-
