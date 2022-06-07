@@ -26,7 +26,7 @@ function display(){
         const deleteButton = document.createElement('button');
         deleteButton.innerText = "Delete";
         deleteButton.style = 'margin: 5px';
-        deleteButton.id = Tasks.id;
+        deleteButton.id = task.id;
         deleteButton.onclick = deleteTask;
         t.appendChild(deleteButton);
 
@@ -39,15 +39,16 @@ display(); //render tasks from array on top
 
 //Adds task in textbox and due date to the end of the list
 function addTask(){
+    const textbox = document.getElementById('new-task-box'); 
+    const newTask = textbox.value;
 
     //If textbox is empty, no task will be displayed
     if (newTask === ''){
         alert('Add a task');
     }
+
     //If textbox is not empty, get textbox value, get date, and add to Tasks array
     else {
-        const textbox = document.getElementById('new-task-box'); 
-        const newTask = textbox.value;
 
         const dateSelector = document.getElementById('date-selector');
         const dueDate = dateSelector.value;
@@ -64,7 +65,7 @@ function addTask(){
     }
 
 }
-
+ 
 //Clears the Tasks array, displays empty array
 function clearList(){
     Tasks = [];
@@ -73,14 +74,19 @@ function clearList(){
 }
 
 //Deletes a task upon click of 'delete' button
-function deleteTask(){
-    console.log('deleted!');
-}
+function deleteTask(event){
+    const deleteButton = event.target;  //the id of the button clicked
+    const idToDelete = deleteButton.id; 
 
-//Button changes text upon click
-function taskDone(){
-    let buttonText = document.getElementById('todo-button');
-    buttonText.innerText = 'Done';
+    Tasks = Tasks.filter(function(task){
+        if (task.id === idToDelete){
+            return false;
+        }
+        else{
+            return true;
+        }
+    });
+    display();
 }
 
 
