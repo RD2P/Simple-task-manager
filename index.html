@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks List</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
-    
-    <input id="new-task-box" type="text"/>
-    <input id="date-selector" type="date"/>
-    <button onclick="addTask()">Add task</button>
-    <button onclick="clearList()">Clear</button>
+    <h2>Enter a task and due date: </h2>
+    <div id="inputs">
+        <input id="new-task-box" type="text"/>
+        <input id="date-selector" type="date"/>
+        <button id="add-task-button" onclick="addTask()">Add task</button>
+        
+    </div>
+
     
     <div id="tasks-list"></div>
+    <button id="clear-button" onclick="clearList()">Clear all tasks</button>
 
     <script src="script.js"></script>
 </body>

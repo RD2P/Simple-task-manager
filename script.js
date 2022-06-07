@@ -63,9 +63,11 @@ function display(){
         //add delete button next to each task
         const deleteButton = document.createElement('button');
         deleteButton.innerText = "Delete";
-        deleteButton.style = 'margin: 5px';
+        //deleteButton.style.cssText = "";
+        deleteButton.classList.add('delete-button');
         deleteButton.id = task.id;
         deleteButton.onclick = deleteTask;
+        t.style = 'font-family: tahoma';
         t.appendChild(deleteButton);
 
         const tasksList = document.getElementById('tasks-list');
@@ -83,12 +85,13 @@ function addTask(){
     const newTask = document.getElementById('new-task-box').value; 
     const dueDate = document.getElementById('date-selector').value;
 
-    //If textbox is empty, no task will be displayed
+    //Alert if no task typed in or no due date selected
     if (newTask === ''){
-        alert('Add a task');
+        alert('Type in a task');
     }
-
-    //If textbox is not empty, get textbox value, get date, and add to Tasks array
+    else if (dueDate === ''){
+        alert('Add a due date');
+    }
     else {
         createTask(newTask,dueDate);
         display(); 
