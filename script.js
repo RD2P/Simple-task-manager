@@ -63,7 +63,6 @@ function display(){
         //add delete button next to each task
         const deleteButton = document.createElement('button');
         deleteButton.innerText = "Delete";
-        //deleteButton.style.cssText = "";
         deleteButton.classList.add('delete-button');
         deleteButton.id = task.id;
         deleteButton.onclick = deleteTask;
@@ -95,7 +94,9 @@ function addTask(){
     else {
         createTask(newTask,dueDate);
         display(); 
-        document.getElementById('new-task-box').value = '';    //Removes text from textbox after it has been entered
+        //Remove inputs after it has been entered
+        document.getElementById('new-task-box').value = '';    
+        document.getElementById('date-selector').value = '';
     }
 }
  
