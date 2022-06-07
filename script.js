@@ -17,6 +17,14 @@ function display(){
     Tasks.forEach(function(task){
         let t = document.createElement('div');
         t.innerText = task.name + ' ' + task.dueDate;
+
+        //add delete button next to each task
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = "Delete";
+        deleteButton.style = 'margin: 5px';
+        deleteButton.onclick = deleteTask;
+        t.appendChild(deleteButton);
+
         let tasksList = document.getElementById('tasks-list');
         tasksList.appendChild(t);
     })
@@ -40,6 +48,9 @@ function clearList(){
     Tasks = [];
     display();
     
+}
+function deleteTask(){
+    console.log('deleted!');
 }
 
 function taskDone(){
