@@ -1,15 +1,15 @@
 let Tasks = [{
         name:'eat',
         dueDate:'2022-06-10',
-        id:'id1'
+        id:'1'
     },{
         name:'clean',
         dueDate:'2022-06-10',
-        id:'id2'
+        id:'2'
     },{
         name:'run',
         dueDate:'2022-06-11',
-        id: 'id3'
+        id: '3'
     }];
 
 //displays objects in the Tasks array
@@ -53,7 +53,7 @@ function addTask(){
         const dateSelector = document.getElementById('date-selector');
         const dueDate = dateSelector.value;
 
-        const id = new Date().getTime(); //time in ms, id for each task
+        const id = '' + new Date().getTime(); //time in ms, id for each task, turned into a string to prevent type error in deleteTask()
 
         Tasks.push({
             name:newTask,
@@ -75,8 +75,7 @@ function clearList(){
 
 //Deletes a task upon click of 'delete' button
 function deleteTask(event){
-    const deleteButton = event.target;  //the id of the button clicked
-    const idToDelete = deleteButton.id; 
+    const idToDelete = event.target.id; //the id of the button clicked
 
     Tasks = Tasks.filter(function(task){
         if (task.id === idToDelete){
