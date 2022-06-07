@@ -1,16 +1,41 @@
-let Tasks = [{
-        name:'eat',
-        dueDate:'2022-06-10',
-        id:'1'
-    },{
-        name:'clean',
-        dueDate:'2022-06-10',
-        id:'2'
-    },{
-        name:'run',
-        dueDate:'2022-06-11',
-        id: '3'
-    }];
+
+//-------------------MODEL-----
+
+let Tasks = [{        
+    name:'Task',
+    dueDate:'due date',
+    id:''
+}];
+
+//create a task in array of tasks
+function createTask(newTask,dueDate){
+    const id = '' + new Date().getTime(); //create string task id
+
+    Tasks.push({    //add task object into Tasks array
+        name:newTask,
+        dueDate:dueDate,
+        id:id
+    });
+}
+
+//remove a task from array of tasks
+function removeTask(idToDelete){
+    Tasks = Tasks.filter(function(task){
+        if (task.id === idToDelete){
+            return false;
+        }
+        else{
+            return true;
+        }
+    });
+}
+
+//clears all tasks from array
+function clearTasks(){
+    Tasks = [];
+}
+
+//-----------------VIEW--------
 
 //displays objects in the Tasks array
 function display(){     
@@ -20,7 +45,7 @@ function display(){
     //append the task in textbox
     Tasks.forEach(function(task){
         const t = document.createElement('div');
-        t.innerText = task.name + ' ' + task.dueDate;
+        t.innerText = task.name + ' : ' + task.dueDate;
 
         //add delete button next to each task
         const deleteButton = document.createElement('button');
@@ -35,12 +60,15 @@ function display(){
     })
 }
 
-display(); //render tasks from array on top
+//render tasks from array on top
+display(); 
+
+//---------------CONTROLLERS-----
 
 //Adds task in textbox and due date to the end of the list
 function addTask(){
-    const textbox = document.getElementById('new-task-box'); 
-    const newTask = textbox.value;
+    const newTask = document.getElementById('new-task-box').value; 
+    const dueDate = document.getElementById('date-selector').value;
 
     //If textbox is empty, no task will be displayed
     if (newTask === ''){
@@ -49,44 +77,24 @@ function addTask(){
 
     //If textbox is not empty, get textbox value, get date, and add to Tasks array
     else {
-
-        const dateSelector = document.getElementById('date-selector');
-        const dueDate = dateSelector.value;
-
-        const id = '' + new Date().getTime(); //time in ms, id for each task, turned into a string to prevent type error in deleteTask()
-
-        Tasks.push({
-            name:newTask,
-            dueDate:dueDate,
-            id:id
-         });
-         display(); 
-         textbox.value = '';    //Removes text from textbox after it has been entered
+        createTask(newTask,dueDate);
+        display(); 
+        document.getElementById('new-task-box').value = '';    //Removes text from textbox after it has been entered
     }
 
 }
  
-//Clears the Tasks array, displays empty array
-function clearList(){
-    Tasks = [];
-    display();
-    
-}
-
 //Deletes a task upon click of 'delete' button
 function deleteTask(event){
     const idToDelete = event.target.id; //the id of the button clicked
-
-    Tasks = Tasks.filter(function(task){
-        if (task.id === idToDelete){
-            return false;
-        }
-        else{
-            return true;
-        }
-    });
+    removeTask(idToDelete);
     display();
 }
 
+//Clears the Tasks array, displays empty array
+function clearList(){
+    clearTasks();
+    display();
+}
 
 
