@@ -13,7 +13,7 @@ else {
 }
 
 //create a task in array of tasks
-function createTask(newTask,dueDate){
+let createTask = (newTask,dueDate) => {
     const id = '' + new Date().getTime(); //create string task id
 
     Tasks.push({    //add task object into Tasks array
@@ -25,11 +25,11 @@ function createTask(newTask,dueDate){
 }
 
 //remove a task from array of tasks
-function removeTask(idToDelete){
-    Tasks = Tasks.filter(function(task){
-        if (task.id === idToDelete){
-            return false;
-        }
+let removeTask = idToDelete => {
+    Tasks = Tasks.filter(task => {
+        if (task.id === idToDelete) {
+           return false; 
+        } 
         else{
             return true;
         }
@@ -38,25 +38,23 @@ function removeTask(idToDelete){
 }
 
 //clears all tasks from array
-function clearTasks(){
+let clearTasks = () => {
     Tasks = [];
     saveList();
 }
 
 //save the task list to local storage
-function saveList(){
-    localStorage.setItem('tasks',JSON.stringify(Tasks));
-}
+let saveList = () => localStorage.setItem('tasks',JSON.stringify(Tasks))
 
 //-----------------VIEW--------
 
 //displays objects in the Tasks array
-function display(){     
+let display = () => {     
     
     document.getElementById('tasks-list').innerHTML = ''; //reset list to nothing
 
     //append the task in textbox
-    Tasks.forEach(function(task){
+    Tasks.forEach(task => {
         const t = document.createElement('div');
         t.innerText = task.name + ' : ' + task.dueDate;
 
@@ -80,7 +78,7 @@ display();
 //---------------CONTROLLERS-----
 
 //Adds task in textbox and due date to the end of the list
-function addTask(){
+let addTask = () => {
     const newTask = document.getElementById('new-task-box').value; 
     const dueDate = document.getElementById('date-selector').value;
 
@@ -101,14 +99,14 @@ function addTask(){
 }
  
 //Deletes a task upon click of 'delete' button
-function deleteTask(event){
+function deleteTask (event){
     const idToDelete = event.target.id; //the id of the button clicked
     removeTask(idToDelete);
     display();
 }
 
 //Clears the Tasks array, displays empty array
-function clearList(){
+let clearList = () => {
     clearTasks();
     display();
 }
